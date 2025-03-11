@@ -6,6 +6,7 @@ from sqlalchemy.ext.asyncio import AsyncEngine, create_async_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 import asyncio
+from os import getenv as ge
 from alembic import context
 
 # this is the Alembic Config object, which provides
@@ -42,7 +43,7 @@ def run_migrations_offline() -> None:
     script output.
 
     """
-    DATABASE_URL = "postgresql+asyncpg://user:password@localhost/dbname"
+    DATABASE_URL = f"postgresql+asyncpg://{ge("POSTGRES_USER")}:{ge("POSTGRES_PASSWORD")}@{ge("POSTGRES_HOST")}/{ge("POSTGRES_DB")}"
     url = config.set_main_option("sqlalchemy.url", DATABASE_URL)
     context.configure(
         url=url,

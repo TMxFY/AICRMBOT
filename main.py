@@ -2,16 +2,15 @@ from aiogram import Bot, Dispatcher
 import logging
 import os
 from sqlalchemy.engine import URL
-from app.handlers.query import routers
 from app.db import create_async_engine, get_session_maker
 import asyncio
 from app.handlers import register_user_handlers
 from os import getenv as ge
 import pathlib
-from aioredis import Redis
+from redis.asyncio import Redis
 redis = Redis(host=ge("REDIS_HOST"), port=ge("REDIS_PORT"), db=ge("REDIS_DB"))
 
-
+print(ge('bot_token'))
 async def bot_start(logger):
     logging.basicConfig(level=logging.INFO)
     bot = Bot(token=ge('bot_token'))
