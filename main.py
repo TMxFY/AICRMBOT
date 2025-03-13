@@ -1,4 +1,5 @@
 from aiogram import Bot, Dispatcher
+from aiogram.fsm.context import FSMContext
 import logging
 import os
 from sqlalchemy.engine import URL
@@ -8,9 +9,9 @@ from app.handlers import register_user_handlers
 from os import getenv as ge
 import pathlib
 from redis.asyncio import Redis
+
 redis = Redis(host=ge("REDIS_HOST"), port=ge("REDIS_PORT"), db=ge("REDIS_DB"))
 
-print(ge('bot_token'))
 async def bot_start(logger):
     logging.basicConfig(level=logging.INFO)
     bot = Bot(token=ge('bot_token'))
