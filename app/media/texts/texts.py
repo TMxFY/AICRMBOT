@@ -30,8 +30,18 @@ RESPONSES = {
         "Нее, давай изменем"
     ], 
     'add_client_bt_delete':[
-        "Неет, удали эту хуйню"
+        "Неет, удали это"
     ], 
+    'add_client_bd_add':[
+        "Добавил в бд"
+    ], 
+    'add_client_del':[
+        "Удалил если захочешь нового то просто напиши команду /add_client"
+    ], 
+    'add_client_no_change':[
+        "Что хочешь изменить?"
+    ], 
+    
 }
 
 async def _(text,lang):

@@ -9,13 +9,13 @@ from app.handlers import register_user_handlers
 from os import getenv as ge
 import pathlib
 from redis.asyncio import Redis
-
-redis = Redis(host=ge("REDIS_HOST"), port=ge("REDIS_PORT"), db=ge("REDIS_DB"))
+from aiogram.fsm.storage.redis import RedisStorage
+from app.misc import redis
 
 async def bot_start(logger):
     logging.basicConfig(level=logging.INFO)
     bot = Bot(token=ge('bot_token'))
-    dp = Dispatcher()
+    dp = Dispatcher(storage=RedisStorage(redis=redis))
     register_user_handlers(dp)
     postgres_url = URL.create(
         "postgresql+asyncpg",
