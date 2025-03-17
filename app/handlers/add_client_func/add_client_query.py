@@ -16,8 +16,12 @@ async def add_client_query(msg:CallbackQuery,state:FSMContext,session_maker):
     if msg.data == 'Delete(add_client)':
         await msg.message.edit_text(text=await _("add_client_del",'ru'))
         await state.clear()
-    if msg.data in [f"{k}-change" for k,y in data.items()]:
+    if msg.data in [f"{k}-change(add_client)" for k,y in data.items()]:
         await msg.message.edit_text(text="Напиши новое значение")
         dataupdated = str(msg.data).split('-')[0]
         await state.set_state(getattr(ClientINFO,dataupdated))
+    if msg.data == 'Add(add_client)':
+        await state.clear()
+        await state.set_state(ClientINFO.name)
+        await msg.message.edit_text(text=await _("add_client_text", "ru"))
         

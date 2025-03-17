@@ -1,6 +1,6 @@
 RESPONSES = {
     'start_text':[
-        'Привет как дела'
+        'СТАРТ. ПОГНАЛИ ТЕПЕРЬ НАЧИНАЕМ НАШЕ ОБЩЕНИЕ'
     ],
     'add_client_text':[
         'Добавь нового клиента'
@@ -41,7 +41,12 @@ RESPONSES = {
     'add_client_no_change':[
         "Что хочешь изменить?"
     ], 
-    
+    'lookupquerymain':[
+        '{client_id} - {name} - {contact} - {client_status}\n\n'
+    ],
+    'lookupquerymain(addition)':[
+        'Хочешь посмотреть детально введи команду /deal (contact)'
+    ]
 }
 
 async def _(text,lang):

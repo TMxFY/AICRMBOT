@@ -14,6 +14,9 @@ class Client(Base):
     client_from = Column(VARCHAR(255), nullable=False)
     client_status = Column(VARCHAR(255), nullable=False) #сделать потом выпадающий список
 
+    def as_dict(self):
+        return {column.name: getattr(self, column.name) for column in self.__table__.columns}
+
 
 async def create_client(name:str,
                         contact:str,
@@ -37,3 +40,10 @@ async def create_client(name:str,
             except ProgrammingError as e:
                 pass
     return client.client_id
+
+async def get_all_clients(session_maker):
+    async with session_maker() as session:
+        async with session.begin():
+            result = await session.execute(select(Client))
+            clients = result.scalars().all()
+            return [client.as_dict() for client in clients]
