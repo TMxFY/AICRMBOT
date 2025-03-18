@@ -21,7 +21,7 @@ RESPONSES = {
         'Какой сейчас этап сделки?'
     ],
     'add_client_finish':[
-        'Данные о клиенте:\n{name}\n{contact}\n{service}\n{money}\n{client_from}\n{client_status}\n\nВсе верно?'
+        'Данные о клиенте:\nИмя: {name}\nКонтакт: {contact}\nУслуга: {service}\nДеньги: {money}$\nОткуда клиент: {client_from}\nСтатус клиента: {client_status}\n\nВсе верно?'
     ],
     'add_client_bt_yes':[
         "Да, подписываем!"
@@ -46,6 +46,12 @@ RESPONSES = {
     ],
     'lookupquerymain(addition)':[
         'Хочешь посмотреть детально введи команду /deal (contact)'
+    ],
+    'lookupclient(dealclient)':[
+        'Карточка клиента:\n\nИмя: {name}\nКонтакт: {contact}\nУслуга: {service}\nДеньги: {money}$\nОткуда клиент: {client_from}\nСтатус клиента: {client_status}'
+    ],
+    'statisticsmain(statistics)':[
+        "Сумма сделок: {sumcl}$\nКол-во клиентов: {clients}\nСредний чек: {average}$\nЗакрытые сделки: {closed}\nВ работе: {inwork}\nОтказы: {canceled}\nКонверсия: {converstion}"
     ]
 }
 
